@@ -94,7 +94,7 @@ more_data = tk.Listbox(root,width=34,height=14,font=('Simhei',20),relief='sunken
 more_data.place(x = 484, y = 100)
 tk.Button(root, text = "查看分集", command = lambda: get_video_list(result.get(0,tk.END)[result.curselection()[0]]), width=10 ,height=2,activeforeground='#66ccff',font=('Simhei',14)).place(x = 484, y = 500)
 tk.Button(root, text = "下载", command = lambda: download(more_data.curselection()), width=6 ,height=2,activeforeground='#66ccff',font=('Simhei',14)).place(x = 599, y = 500)
-tk.Button(root, text = "下载全部", command = lambda: download(range(len(more_data.get(1,tk.END)))), width=10 ,height=2,activeforeground='#66ccff',font=('Simhei',14)).place(x = 674, y = 500)
+tk.Button(root, text = "下载全部", command = lambda: download(range(len(more_data.get(0,tk.END)))), width=10 ,height=2,activeforeground='#66ccff',font=('Simhei',14)).place(x = 674, y = 500)
 tk.Label(root, text="线\n路",bg="#66ccff",font=('Simhei',15)).place(x = 785, y = 503)
 value = tk.StringVar()
 value.set(channel)
