@@ -53,7 +53,7 @@ def get_video_list(name):
     more_data.delete(0,tk.END)
     for r,t in zip(res_half[::-1],res_txt[::-1]):
         exist_choice.insert(0,'https://gmtv3.xyz'+r)
-        more_data.insert(0,t.replace(' ',''))
+        more_data.insert(0,t.replace('\n','').replace(' ','').replace('	',''))
     return exist_choice
 
 def download(index):
@@ -63,7 +63,7 @@ def download(index):
     for i in index:
         video_url = get_video(exist_choice[i])
         dl_list.append(video_name+'_'+str(i)+'.mp4')
-        grand.write('.\\m3u8DL\\m3u8DL.exe '+video_url+' --saveName '+video_name+'_'+more_data.get(i).replace(' ','')+' --enableDelAfterDone --disableIntegrityCheck\n')
+        grand.write('.\\m3u8DL\\m3u8DL.exe '+video_url+' --saveName '+video_name+'_'+more_data.get(i).replace('\n','').replace(' ','').replace('	','')+' --enableDelAfterDone --disableIntegrityCheck\n')
     grand.close()
     os.system('start download.bat')
 
