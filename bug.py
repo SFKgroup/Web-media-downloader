@@ -60,10 +60,11 @@ def download(index):
     global exist_choice,video_name
     grand = open('./download.bat','w',encoding='gbk')
     dl_list = []
+    for i in ['/','\\',':','*','?','"','|','<','>']:video_name = video_name.replace(i,'_')
     for i in index:
         video_url = get_video(exist_choice[i])
         dl_list.append(video_name+'_'+str(i)+'.mp4')
-        grand.write('.\\m3u8DL\\m3u8DL.exe '+video_url+' --saveName '+video_name+'_'+more_data.get(i).replace('\n','').replace(' ','').replace('	','')+' --enableDelAfterDone --disableIntegrityCheck\n')
+        grand.write('.\\m3u8DL\\m3u8DL.exe '+video_url+' --saveName "'+video_name+'_'+more_data.get(i).replace('\n','').replace(' ','').replace('	','')+'" --enableDelAfterDone --disableIntegrityCheck\n')
     grand.close()
     os.system('start download.bat')
 
